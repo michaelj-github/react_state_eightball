@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# React State - Eight Ball
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Solution Notes
 
-## Available Scripts
+Baseline environment was created using CRA.
 
-In the project directory, you can run:
+    mkdir react_state
+    cd react_state
+    npx create-react-app eightball
+    cd eightball
+    npm install
+    npm start
 
-### `npm start`
+See CRA_README.md for more information on the environment created by CRA
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Two components were created as described below in the Exercise instructions and requirements
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    App.js
+    Eightball.js, with Eightball.css
 
-### `npm test`
+## Exercise Instructions and Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(There is no starter code for this exercise)
 
-### `npm run build`
+In this exercise, you’ll build a simulation of a classic kid’s toy, the Magic Eight Ball.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This should appear as a black ball that initially reads “Think of a Question”, like this:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![black.png](./black.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When you click on the ball, it should choose a random answer & the matching color for that answer. For example, after clicking, it might look like this:
 
-### `npm run eject`
+![green.png](./green.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### EightBall Component
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This application will consist of two components:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+App
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    A simple component that just renders an EightBall component.
 
-## Learn More
+EightBall
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    The component for the magic eight ball.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The EightBall should take a single property, answers, which should be an array of objects, with each object having a key for msg and color. For example, to use the answers from the classic commercial product, you could use these:
 
-### Code Splitting
+```
+[
+  { msg: "It is certain.", color: "green" },
+  { msg: "It is decidedly so.", color: "green" },
+  { msg: "Without a doubt.", color: "green" },
+  { msg: "Yes - definitely.", color: "green" },
+  { msg: "You may rely on it.", color: "green" },
+  { msg: "As I see it, yes.", color: "green" },
+  { msg: "Most likely.", color: "green" },
+  { msg: "Outlook good.", color: "green" },
+  { msg: "Yes.", color: "green" },
+  { msg: "Signs point to yes.", color: "goldenrod" },
+  { msg: "Reply hazy, try again.", color: "goldenrod" },
+  { msg: "Ask again later.", color: "goldenrod" },
+  { msg: "Better not tell you now.", color: "goldenrod" },
+  { msg: "Cannot predict now.", color: "goldenrod" },
+  { msg: "Concentrate and ask again.", color: "goldenrod" },
+  { msg: "Don't count on it.", color: "red" },
+  { msg: "My reply is no.", color: "red" },
+  { msg: "My sources say no.", color: "red" },
+  { msg: "Outlook not so good.", color: "red" },
+  { msg: "Very doubtful.", color: "red" },
+]
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The EightBall will need state to keep track of the current color and message text, and this state should initially be “black” and “Think of a Question”.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Make it so that the ball chooses a random message when it is clicked on. This should change the background color of the ball and the message.
