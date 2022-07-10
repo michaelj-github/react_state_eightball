@@ -8,7 +8,6 @@ Baseline environment was created using CRA.
     cd react_state
     npx create-react-app eightball
     cd eightball
-    npm install
     npm start
 
 See CRA_README.md for more information on the environment created by CRA
